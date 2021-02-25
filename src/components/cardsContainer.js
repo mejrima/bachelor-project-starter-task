@@ -1,24 +1,43 @@
-import React, {Component} from 'react';
+
+import React, {Component, useState } from 'react';
+import PropTypes from 'prop-types';
+
 import Container from '@material-ui/core/Container';
 import MyCard from './myCard';
 
-function CardsContainer(props) {
-    const array = props.cardsText
-    const n = props.selected
+
+function CardsContainer({ selected, cardsText }) {
+    const [currentCardsText, setCurrentCardsText] = useState(cardsText)
+    const [currentlySelected, setCurrentlySelected] = useState(selected)
     let h = false
     return (
         <Container maxWidth="sm">
-            <h1>Card {props.selected} selected!</h1>
-            { array.map((e, i) => {
-                if (n === i+1){
+            <h1>Card {currentlySelected} selected!</h1>
+            { currentCardsText.map((e, i) => {
+                if (currentlySelected === i){
                     h = true
                 } else {
                     h = false
                 }
-                return <MyCard value={e} highlight={h}/>
+                return <MyCard 
+                    key={e}
+                    value={e} 
+                    highlight={h}
+                    handleClick={setCurrentlySelected}
+                    index={i}
+                />
             })}
         </Container>
         );
 }
 
+CardsContainer.propTypes = {
+    selected: PropTypes.number,
+    cardsText: PropTypes.arrayOf(PropTypes.string),
+};
+
+CardsContainer.defaultProps = {
+    selected: false,
+    cardsText: [],
+};
 export default CardsContainer;

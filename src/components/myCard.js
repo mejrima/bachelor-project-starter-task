@@ -10,23 +10,17 @@ const useStyles = makeStyles({
 
 function MyCard(props) {
     const classes = useStyles();
-    if (props.highlight) {
-        return (
-        <Card className={classes.root} variant="outlined"> 
+    return (
+        <Card 
+            onClick={() => {props.handleClick(props.index)}}
+            className={props.highlight ? classes.root : undefined}
+            variant="outlined"
+        > 
             <CardContent>
             {props.value}
             </CardContent>
         </Card>
-        );
-    } else {
-        return (
-        <Card variant="outlined"> 
-            <CardContent>
-            {props.value}
-            </CardContent>
-        </Card>
-        );
-    }
+    );
 }
 
 export default MyCard;
