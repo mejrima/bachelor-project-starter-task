@@ -5,7 +5,7 @@ const useStyles = makeStyles({
     root: {
         minWidth: 275,
         background: "red"
-    }, 
+    }
 });
 
 function MyCard(props) {

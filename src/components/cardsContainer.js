@@ -1,3 +1,4 @@
+
 import React, {Component, useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -39,5 +40,4 @@ CardsContainer.defaultProps = {
     selected: false,
     cardsText: [],
 };
-
 export default CardsContainer;
